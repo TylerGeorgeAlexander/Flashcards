@@ -29,16 +29,16 @@ export default function ViewDeck() {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">
-              <span class="oi oi-home"></span> Home
+              <span className="oi oi-home"></span> Home
             </Link>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Study
           </li>
         </ol>
@@ -47,47 +47,47 @@ export default function ViewDeck() {
         <h3>{deck.name}</h3>
         <p>{deck.description}</p>
         <Link to={`/decks/${deck.id}/edit`}>
-          <button class="btn btn-secondary mr-2">
-            <span class="oi oi-pencil"></span> Edit
+          <button className="btn btn-secondary mr-2">
+            <span className="oi oi-pencil"></span> Edit
           </button>
         </Link>
         <Link to={`/decks/${deck.id}/study`}>
-          <button class="btn btn-primary mr-2">
-            <span class="oi oi-book"></span> Study
+          <button className="btn btn-primary mr-2">
+            <span className="oi oi-book"></span> Study
           </button>
         </Link>
         <Link to={`/decks/${deck.id}/cards/new`}>
-          <button class="btn btn-primary mr-2">
-            <span class="oi oi-plus"></span> Add Cards
+          <button className="btn btn-primary mr-2">
+            <span className="oi oi-plus"></span> Add Cards
           </button>
         </Link>
 
-        <button class="btn btn-danger float-right" onClick={deleteDeckHandler}>
-          <span class="oi oi-trash"></span>
+        <button className="btn btn-danger float-right" onClick={deleteDeckHandler}>
+          <span className="oi oi-trash"></span>
         </button>
       </div>
-      <div class="mt-4 mb-4">
+      <div className="mt-4 mb-4">
         <h2>Cards</h2>
         {deck.cards.map((card) => (
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <p class="card-text">{card.front}</p>
+          <div className="card">
+            <div className="card-body">
+              <div className="row">
+                <div className="col">
+                  <p className="card-text">{card.front}</p>
                 </div>
-                <div class="col">
-                  <p class="card-text">{card.back}</p>
+                <div className="col">
+                  <p className="card-text">{card.back}</p>
                 </div>
               </div>
               <button
-                class="btn btn-danger float-right"
+                className="btn btn-danger float-right"
                 onClick={deleteCardHandler}
               >
-                <span class="oi oi-trash"></span>
+                <span className="oi oi-trash"></span>
               </button>
               <Link to={`/decks/${deck.id}/cards/${card.id}/edit`}>
-                <button class="btn btn-secondary mr-2 float-right">
-                  <span class="oi oi-pencil"></span> Edit
+                <button className="btn btn-secondary mr-2 float-right">
+                  <span className="oi oi-pencil"></span> Edit
                 </button>
               </Link>
             </div>

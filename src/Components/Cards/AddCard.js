@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { readDeck, listDecks } from "../../utils/api";
+import { readDeck } from "../../utils/api";
 
 export default function AddCard() {
   const [deck, setDeck] = useState([{name:"ph", description:"ph"}]);
   const [deckName, setDeckName] = useState("");
-  const [deckDesc, setDeckDesc] = useState("");
   const { deckId } = useParams();
 
 
@@ -18,9 +17,6 @@ export default function AddCard() {
     
   }, [deckId]);
 
-console.log(deck)
-// setDeckName(deck[deckId].name)
-// setDeckDesc(deck[deckId].description)
 
   return (
     <div>

@@ -14,12 +14,12 @@ export default function Home() {
 //   }, []);
 
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col">
+      <div className="container">
+        <div className="row">
+          <div className="col">
             <Link to="/decks/new">
-              <button class="btn btn-secondary mb-2">
-                <span class="oi oi-plus"></span> Create Deck
+              <button className="btn btn-secondary mb-2">
+                <span className="oi oi-plus"></span> Create Deck
               </button>
             </Link>
             <HomeMap />

@@ -4,10 +4,7 @@ import { readDeck } from "../../utils/api";
 import NotEnoughCards from "../NotEnoughCards";
 
 export default function StudyDeck() {
-  // constructing a deck using useState
-  // const [cards, setCards] = useState({cards: []});
   const [deck, setDeck] = useState({ cards: [] });
-  // deckId could be the name of the deck we need to read
   const { deckId } = useParams();
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [flip, setFlip] = useState("front");
@@ -15,7 +12,6 @@ export default function StudyDeck() {
 
   useEffect(() => {
     readDeck(deckId).then(setDeck);
-    // readDeck(deckId).then(setCards);
   }, [deckId]);
 
   const flipHandler = async () => {
@@ -39,8 +35,6 @@ export default function StudyDeck() {
     }
   };
 
-  // breadcrumbs is the greyed out navigation box in the app, look into bootstrap for more references
-  // use route match for next step possibly
   if (!deck.cards.length) {
     return "Loading ....";
   }
@@ -65,7 +59,11 @@ export default function StudyDeck() {
             </li>
           </ol>
         </nav>
-        <NotEnoughCards deckId={deckId} cardTotal={cardTotal} deckName={deckName} />
+        <NotEnoughCards
+          deckId={deckId}
+          cardTotal={cardTotal}
+          deckName={deckName}
+        />
       </div>
     );
   }

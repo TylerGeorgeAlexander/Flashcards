@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { listDecks } from "../utils/api";
+import { Link, useHistory } from "react-router-dom";
+import { listDecks, deleteDeck } from "../utils/api";
 
 export default function HomeMap() {
   const [decks, setDecks] = useState([]);
@@ -13,31 +13,33 @@ export default function HomeMap() {
     fetchMyAPI();
   }, []);
 
-  const deleteHandler = () => {
+  const deleteHandler = async (deleteThisDeckId) => {
     if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
-      console.log("Delete PH")
+      deleteDeck(deleteThisDeckId) 
+      let response = await listDecks();
+      setDecks(response);
     }
   };
 
   return decks.map((deck) => {
     return (
-      <div class="card">
-        <div class="card-body">
-          <p class="float-right">{deck.cards.length} cards</p>
-          <h5 class="card-title">{deck.name}</h5>
-          <p class="card-text">{deck.description}</p>
+      <div className="card">
+        <div className="card-body">
+          <p className="float-right">{deck.cards.length} cards</p>
+          <h5 className="card-title">{deck.name}</h5>
+          <p className="card-text">{deck.description}</p>
           <Link to={`/decks/${deck.id}`}>
-            <button class="btn btn-secondary mr-2">
-              <span class="oi oi-eye"></span> View
+            <button className="btn btn-secondary mr-2">
+              <span className="oi oi-eye"></span> View
             </button>
           </Link>
           <Link to={`/decks/${deck.id}/study`}>
-            <button class="btn btn-primary">
-              <span class="oi oi-book"></span> Study
+            <button className="btn btn-primary">
+              <span className="oi oi-book"></span> Study
             </button>
           </Link>
-          <button class="btn btn-danger float-right" onClick={deleteHandler}>
-            <span class="oi oi-trash"></span>
+          <button className="btn btn-danger float-right" onClick={()=>deleteHandler(deck.id)}>
+            <span className="oi oi-trash"></span>
           </button>
         </div>
       </div>
