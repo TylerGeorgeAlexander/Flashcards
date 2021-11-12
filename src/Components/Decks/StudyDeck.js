@@ -45,16 +45,16 @@ export default function StudyDeck() {
     return (
       <div>
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <Link to="/">
-                <span class="oi oi-home"></span> Home
+                <span className="oi oi-home"></span> Home
               </Link>
             </li>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               Study
             </li>
           </ol>
@@ -71,32 +71,32 @@ export default function StudyDeck() {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">
-              <span class="oi oi-home"></span> Home
+              <span className="oi oi-home"></span> Home
             </Link>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <Link to={`/decks/${deck.id}`}>{deck.name}</Link>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Study
           </li>
         </ol>
       </nav>
       <h2>Study: {deck.name}</h2>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">
             Card {currentCardIndex + 1} of {deck.cards.length}
           </h5>
-          <p class="card-text">{deck.cards[currentCardIndex][flip]}</p>
-          <button class="btn btn-secondary mr-2" onClick={flipHandler}>
+          <p className="card-text">{deck.cards[currentCardIndex][flip]}</p>
+          <button className="btn btn-secondary mr-2" onClick={flipHandler}>
             Flip
           </button>
           {flip === "back" && (
-            <button class="btn btn-primary" onClick={nextHandler}>
+            <button className="btn btn-primary" onClick={nextHandler}>
               Next
             </button>
           )}

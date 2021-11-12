@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { listDecks, deleteDeck } from "../utils/api";
 
 export default function HomeMap() {
@@ -23,7 +23,7 @@ export default function HomeMap() {
 
   return decks.map((deck) => {
     return (
-      <div className="card">
+      <div key={deck.id} className="card">
         <div className="card-body">
           <p className="float-right">{deck.cards.length} cards</p>
           <h5 className="card-title">{deck.name}</h5>

@@ -1,28 +1,30 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { readDeck } from "../../utils/api";
+import { readDeck, deleteDeck, deleteCard } from "../../utils/api";
 
 export default function ViewDeck() {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({ cards: [] });
 
+  const history = useHistory();
   useEffect(() => {
     readDeck(deckId).then(setDeck);
     // readDeck(deckId).then(setCards);
   }, [deckId]);
 
-  const deleteDeckHandler = () => {
+  const deleteDeckHandler = async (deleteThisDeckId) => {
     if (
       window.confirm("Delete this deck?\n\nYou will not be able to recover it.")
     ) {
-      console.log("Delete deck PH");
+      deleteDeck(deleteThisDeckId);
+      history.push("/");
     }
   };
-  const deleteCardHandler = () => {
+  const deleteCardHandler = (deleteThisCardId) => {
     if (
       window.confirm("Delete this card?\n\nYou will not be able to recover it.")
     ) {
-      console.log("Delete card PH");
+      deleteCard(deleteThisCardId);
     }
   };
 
@@ -62,14 +64,17 @@ export default function ViewDeck() {
           </button>
         </Link>
 
-        <button className="btn btn-danger float-right" onClick={deleteDeckHandler}>
+        <button
+          className="btn btn-danger float-right"
+          onClick={()=>deleteDeckHandler(deck.id)}
+        >
           <span className="oi oi-trash"></span>
         </button>
       </div>
       <div className="mt-4 mb-4">
         <h2>Cards</h2>
         {deck.cards.map((card) => (
-          <div className="card">
+          <div key={card.id} className="card">
             <div className="card-body">
               <div className="row">
                 <div className="col">
@@ -81,7 +86,7 @@ export default function ViewDeck() {
               </div>
               <button
                 className="btn btn-danger float-right"
-                onClick={deleteCardHandler}
+                onClick={()=>deleteCardHandler(card.id)}
               >
                 <span className="oi oi-trash"></span>
               </button>

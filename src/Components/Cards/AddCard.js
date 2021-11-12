@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { readDeck } from "../../utils/api";
+import { Link, useParams, useHistory } from "react-router-dom";
+import { readDeck, createCard } from "../../utils/api";
 
 export default function AddCard() {
-  const [deck, setDeck] = useState([{name:"ph", description:"ph"}]);
-  const [deckName, setDeckName] = useState("");
-  const { deckId } = useParams();
+  const [deck, setDeck] = useState([{ name: "ph", description: "ph" }]);
 
+  const { deckId } = useParams();
+  const [card, setCard] = useState({ front: "", back: "" });
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -14,9 +15,18 @@ export default function AddCard() {
       setDeck(response);
     }
     fetchMyAPI();
-    
   }, [deckId]);
 
+  function doneRedirect() {
+    history.push(`/decks/${deckId}`);
+  }
+
+  async function addCardHandler(e) {
+    e.preventDefault();
+    console.log("addCardHandler", card);
+    await createCard(deckId, card);
+    setCard({ front: "", back: "" })
+  }
 
   return (
     <div>
@@ -35,31 +45,42 @@ export default function AddCard() {
           </li>
         </ol>
       </nav>
-      <h2>{deckName}{deck.name}: Add Card</h2>
-        <p class="mt-2">Front</p>
-      <form>
+      <h2>{deck.name}: Add Card</h2>
+      <p class="mt-2">Front</p>
+      <form onSubmit={addCardHandler}>
         <textarea
           type="textarea"
           name="text"
-          id="text"
+          id="front"
           required
-          value="Front side of card ph"
-          onChange={(event) => setDeckName(event.target.value)}
+          placeholder="Front side of card"
+          value={card.front}
+          onChange={(event) =>
+            setCard({ ...card, [event.target.id]: event.target.value })
+          }
         />
-      </form>
-      <p class="mt-2">Back</p>
-      <form>
+        <p class="mt-2">Back</p>
         <textarea
           type="textarea"
           name="textarea"
-          id="textarea"
+          id="back"
           required
-          value="Back side of card ph"
-          onChange={(event) => setDeckName(event.target.value)}
+          placeholder="Back side of card"
+          value={card.back}
+          onChange={(event) =>
+            setCard({ ...card, [event.target.id]: event.target.value })
+          }
         />
+        <button
+          class="btn btn-secondary mr-2 mt-2"
+          onClick={() => doneRedirect}
+        >
+          Done
+        </button>
+        <button class="btn btn-primary mt-2" type="submit">
+          Save
+        </button>
       </form>
-      <button class="btn btn-secondary mr-2 mt-2">Done</button>
-      <button class="btn btn-primary mt-2" type="submit">Save</button>
     </div>
   );
 }
