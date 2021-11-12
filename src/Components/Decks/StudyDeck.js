@@ -35,9 +35,10 @@ export default function StudyDeck() {
     }
   };
 
-  if (!deck.cards.length) {
-    return "Loading ....";
-  }
+  // Used to block null / undefined rendering, but unsure if still needed.
+  // if (!deck.cards.length) {
+  //   return "Loading ....";
+  // }
 
   if (deck.cards.length < 3) {
     const cardTotal = deck.cards.length;

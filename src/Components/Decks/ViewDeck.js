@@ -9,7 +9,6 @@ export default function ViewDeck() {
   const history = useHistory();
   useEffect(() => {
     readDeck(deckId).then(setDeck);
-    // readDeck(deckId).then(setCards);
   }, [deckId]);
 
   const deleteDeckHandler = async (deleteThisDeckId) => {

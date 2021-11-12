@@ -31,22 +31,22 @@ export default function AddCard() {
   return (
     <div>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <Link to="/">
-              <span class="oi oi-home"></span> Home
+              <span className="oi oi-home"></span> Home
             </Link>
           </li>
-          <li class="breadcrumb-item">
+          <li className="breadcrumb-item">
             <Link to={`/decks/${deckId}`}>{deck.name}</Link>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Add Card
           </li>
         </ol>
       </nav>
       <h2>{deck.name}: Add Card</h2>
-      <p class="mt-2">Front</p>
+      <p className="mt-2">Front</p>
       <form onSubmit={addCardHandler}>
         <textarea
           type="textarea"
@@ -59,7 +59,7 @@ export default function AddCard() {
             setCard({ ...card, [event.target.id]: event.target.value })
           }
         />
-        <p class="mt-2">Back</p>
+        <p className="mt-2">Back</p>
         <textarea
           type="textarea"
           name="textarea"
@@ -72,12 +72,12 @@ export default function AddCard() {
           }
         />
         <button
-          class="btn btn-secondary mr-2 mt-2"
-          onClick={() => doneRedirect}
+          className="btn btn-secondary mr-2 mt-2"
+          onClick={doneRedirect}
         >
           Done
         </button>
-        <button class="btn btn-primary mt-2" type="submit">
+        <button className="btn btn-primary mt-2" type="submit">
           Save
         </button>
       </form>
