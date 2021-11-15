@@ -11,6 +11,7 @@ export default function CardForm({
         name="text"
         id="front"
         required
+        style={{ width: "100%" }}
         placeholder="Front side of card"
         value={card.front}
         onChange={(event) =>
@@ -23,6 +24,7 @@ export default function CardForm({
         name="textarea"
         id="back"
         required
+        style={{ width: "100%" }}
         placeholder="Back side of card"
         value={card.back}
         onChange={(event) =>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck, updateDeck } from "../../utils/api";
 
 export default function EditDecks() {
@@ -7,6 +7,7 @@ export default function EditDecks() {
   const [deck, setDeck] = useState({ name: "", description: "" });
   // deckId could be the name of the deck we need to read
   const { deckId } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -20,6 +21,11 @@ export default function EditDecks() {
     e.preventDefault();
     // console.log("edit deck", deck);
     updateDeck(deck);
+    viewDeckRedirect();
+  }
+
+  function viewDeckRedirect() {
+    history.push(`/decks/${deckId}`);
   }
 
   return (
@@ -69,7 +75,7 @@ export default function EditDecks() {
           }
         />
 
-        <button className="btn btn-secondary mr-2 mt-2">Cancel</button>
+        <button className="btn btn-secondary mr-2 mt-2" onClick={viewDeckRedirect}>Cancel</button>
         <button className="btn btn-primary mt-2" type="submit">
           Submit
         </button>

@@ -18,16 +18,10 @@
   ],
   "cards": [
     {
-      "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route> ",
+      "front": "What does <Switch> do? test",
+      "back": "Renders the first matching child <Route> test",
       "deckId": 2,
       "id": 5
-    },
-    {
-      "front": "a",
-      "back": "b",
-      "deckId": 2,
-      "id": 6
     },
     {
       "front": "1",
@@ -58,6 +52,12 @@
       "back": "add back a",
       "deckId": 2,
       "id": 11
+    },
+    {
+      "front": "add a",
+      "back": "add a",
+      "deckId": 2,
+      "id": 12
     }
   ]
 }
