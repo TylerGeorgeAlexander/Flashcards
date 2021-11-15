@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck, readCard, updateCard } from "../../utils/api";
+import CardForm from "./CardForm";
 
 export default function EditCard() {
   const [deck, setDeck] = useState({ name: "", description: "" });
@@ -48,40 +49,12 @@ export default function EditCard() {
         </ol>
       </nav>
       <h2>Edit Card</h2>
-      <form onSubmit={editCardHandler}>
-        <label className="mt-2">Front</label>
-
-        <textarea
-          type="text"
-          name="text"
-          id="front"
-          style={{ width: "100%" }}
-          required
-          value={card.front}
-          onChange={(event) =>
-            setCard({ ...card, [event.target.id]: event.target.value })
-          }
-        />
-
-        <label className="mt-2">Back</label>
-
-        <textarea
-          type="text"
-          name="text"
-          id="back"
-          style={{ width: "100%" }}
-          required
-          value={card.back}
-          onChange={(event) =>
-            setCard({ ...card, [event.target.id]: event.target.value })
-          }
-        />
-
-        <button className="btn btn-secondary mr-2 mt-2" onClick={viewDeckRedirect}>Cancel</button>
-        <button className="btn btn-primary mt-2" type="submit">
-          Submit
-        </button>
-      </form>
+      <CardForm
+        cardHandler={editCardHandler}
+        card={card}
+        setCard={setCard}
+        viewDeckRedirect={viewDeckRedirect}
+      />
     </div>
   );
 }
