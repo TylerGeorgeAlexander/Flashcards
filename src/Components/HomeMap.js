@@ -18,6 +18,7 @@ export default function HomeMap() {
       deleteDeck(deleteThisDeckId) 
       let response = await listDecks();
       setDecks(response);
+      window.location.reload(false);
     }
   };
 

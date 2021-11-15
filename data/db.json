@@ -14,31 +14,6 @@
       "name": "b",
       "description": "b",
       "id": 4
-    },
-    {
-      "name": "c",
-      "description": "c",
-      "id": 5
-    },
-    {
-      "name": "test",
-      "description": "a",
-      "id": 6
-    },
-    {
-      "name": "a",
-      "description": "a",
-      "id": 7
-    },
-    {
-      "name": "a",
-      "description": "a",
-      "id": 8
-    },
-    {
-      "name": "b",
-      "description": "b",
-      "id": 9
     }
   ],
   "cards": [
@@ -47,6 +22,36 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "a",
+      "back": "b",
+      "deckId": 2,
+      "id": 6
+    },
+    {
+      "front": "1",
+      "back": "1",
+      "deckId": 3,
+      "id": 7
+    },
+    {
+      "front": "2",
+      "back": "2",
+      "deckId": 3,
+      "id": 8
+    },
+    {
+      "front": "3",
+      "back": "3",
+      "deckId": 3,
+      "id": 9
+    },
+    {
+      "front": "4",
+      "back": "4",
+      "deckId": 3,
+      "id": 10
     }
   ]
 }
