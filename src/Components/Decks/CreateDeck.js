@@ -10,7 +10,7 @@ export default function CreateDeck() {
     e.preventDefault();
     await createDeck(deck);
     let newDecks = await listDecks();
-    history.push(`/decks/${newDecks.length}`);
+    history.push(()=>`/decks/${newDecks.length}`);
   };
 
   return (
@@ -30,7 +30,6 @@ export default function CreateDeck() {
       <h2>Create Deck</h2>
       <form onSubmit={submitHandler}>
         <label className="mt-2">Name</label>
-
         <input
           type="text"
           name="text"
@@ -43,9 +42,7 @@ export default function CreateDeck() {
             setDeck({ ...deck, [event.target.id]: event.target.value })
           }
         />
-
         <label className="mt-2">Description</label>
-
         <textarea
           type="text"
           name="text"

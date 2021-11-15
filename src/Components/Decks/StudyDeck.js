@@ -36,9 +36,9 @@ export default function StudyDeck() {
   };
 
   // Used to block null / undefined rendering, but unsure if still needed.
-  // if (!deck.cards.length) {
-  //   return "Loading ....";
-  // }
+  if (deck.cards.length === undefined) {
+    return "Loading ....";
+  }
 
   if (deck.cards.length < 3) {
     const cardTotal = deck.cards.length;

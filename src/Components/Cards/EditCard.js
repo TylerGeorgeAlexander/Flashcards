@@ -25,7 +25,7 @@ export default function EditCard() {
 
   async function editCardHandler(e) {
     e.preventDefault();
-    console.log("edit card", card);
+    // console.log("edit card", card);
     updateCard(card);
     viewDeckRedirect();
   }

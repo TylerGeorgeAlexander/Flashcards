@@ -5,8 +5,8 @@ import { readDeck, deleteDeck, deleteCard } from "../../utils/api";
 export default function ViewDeck() {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({ cards: [] });
-
   const history = useHistory();
+
   useEffect(() => {
     readDeck(deckId).then(setDeck);
   }, [deckId]);
@@ -19,11 +19,12 @@ export default function ViewDeck() {
       history.push("/");
     }
   };
-  const deleteCardHandler = (deleteThisCardId) => {
+  const deleteCardHandler = async (deleteThisCardId) => {
     if (
       window.confirm("Delete this card?\n\nYou will not be able to recover it.")
     ) {
       deleteCard(deleteThisCardId);
+      window.location.reload(false);
     }
   };
 
@@ -65,7 +66,7 @@ export default function ViewDeck() {
 
         <button
           className="btn btn-danger float-right"
-          onClick={()=>deleteDeckHandler(deck.id)}
+          onClick={() => deleteDeckHandler(deck.id)}
         >
           <span className="oi oi-trash"></span>
         </button>
@@ -85,7 +86,7 @@ export default function ViewDeck() {
               </div>
               <button
                 className="btn btn-danger float-right"
-                onClick={()=>deleteCardHandler(card.id)}
+                onClick={() => deleteCardHandler(card.id)}
               >
                 <span className="oi oi-trash"></span>
               </button>
